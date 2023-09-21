@@ -1,8 +1,13 @@
 class Item():
     def __init__(self, name, price):
-        # PURPOSE: create a menu item with a name and price
-        # INPUTS: name (string), price (float)
-        # OUTPUTS: none
-        # RETURN: none
-        # EFFECT: sets the name and price of the item
-        pass
+        if type(name) != str:
+            raise TypeError("name must be a string")
+        elif name.strip() == "":
+            raise ValueError("name must not be empty")
+        elif type(price) != float and type(price) != int:
+            raise TypeError("price must be a number")
+        elif price < 0:
+            raise ValueError("price must be positive")
+        
+        self.name = name
+        self.price = float(f'{price:.2f}')
