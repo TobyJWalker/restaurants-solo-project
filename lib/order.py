@@ -1,6 +1,4 @@
 from lib.item import Item
-from lib.menu import Menu
-from twilio.rest import Client
 from datetime import datetime, timedelta
 import os
 
