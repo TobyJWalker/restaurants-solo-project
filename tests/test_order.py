@@ -2,6 +2,9 @@ import pytest
 from unittest.mock import Mock
 from twilio.rest import Client
 from lib.order import *
+import os
+
+TEST_NUMBER = os.environ["TEST_NUMBER"]
 
 def test_order_empty():
     order = Order("client")
@@ -58,4 +61,4 @@ def test_place_order():
     order._text = Mock(return_value="queued")
     item = Item("pizza", 1.00)
     order.add_item(item)
-    assert order.place_order("+447481832146") == "Order is being prepared"
+    assert order.place_order(TEST_NUMBER) == "Order is being prepared"

@@ -1,6 +1,8 @@
 from lib.order import *
 from twilio.rest import Client
-import pytest
+import pytest, os
+
+TEST_NUMBER = os.environ["TEST_NUMBER"]
 
 def test_total_cost_one_item():
     order = Order(Client)
@@ -51,5 +53,5 @@ def test_text():
     assert order.items == [item1, item2]
     assert order.receipt() == "pizza - £3.00\nchips - £1.00\nTotal: £4.00"
 
-    order_output = order.place_order("+447481832146")
+    order_output = order.place_order(TEST_NUMBER)
     assert order_output == "Order is being prepared"
